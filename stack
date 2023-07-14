@@ -1,0 +1,32 @@
+import java.util.Stack;
+public class QueueTwoStacks<T> {
+	//implementation of Queue using Two Stacks
+	private Stack<T> insertionstack;
+	private Stack<T> deletionstack;
+	public QueueTwoStacks()
+	{
+		insertionstack=new Stack<>();
+		deletionstack=new Stack<>();
+	}
+	public void Enqueue(T item)
+	{
+		insertionstack.push(item);
+	}
+	public T Dequeue()
+	{
+		//deletionstack.pop();
+		if(deletionstack.isEmpty())
+		{
+			System.out.println("Empty Queue");
+		}
+		else
+		{
+			while(!insertionstack.isEmpty())
+			{
+				deletionstack.push(insertionstack.pop());
+			}
+		}
+		return deletionstack.pop();
+	}
+	
+}
